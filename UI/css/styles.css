@@ -93,6 +93,101 @@ header a:hover{
  font-size: 20px;
 }
 
+#showcase #already_user{
+ color: #e8459d;
+ font-weight: bold;
+ margin-top: 25px;
+ margin-bottom: 25px;
+}
+
+#showcase button{
+ font-size: 20px;
+ //display: block;
+ float: none;
+ width: 150px;
+ margin-bottom: 15px;
+}
+
+#add_acct_sect{
+ margin-bottom: 30px;
+}
+
+add_acct_div{
+ margin-top: 20px;
+ margin-bottom: 20px;
+}
+
+#add_acct{
+ margin-left: 350px;
+ margin-bottom: 30px;
+ margin-top: 70px;
+}
+
+#add_acct button{
+ height: 70px;
+}
+
+#account div{
+ margin: 30px 0 30px 0;
+}
+
+.zone{
+ text-align: center;
+}
+
+/*Accounts table*/
+
+#table_div{
+ margin-top: 20px;
+ margin-bottom: 20px;
+}
+
+table{
+ font-family:arial, sanserif;
+ border-collapse: collapse;
+ width: 100%;
+}
+
+td, th{
+ border: 1px solid #ccddff;
+ text-align: left;
+ padding: 8px;
+}
+
+
+
+
+/* forms */
+
+.one_btn_form div{
+ margin: 30px 0 30px 0;
+}
+
+p#create_acct{
+ text-align: center;
+}
+
+.left_btn_form{
+  margin-right: 70px;
+  margin-bottom: 30px;
+}
+
+#credit_debit div{
+ margin-top: 15px;
+ margin-bottom: 15px;
+}
+
+
+#cr_db_inp{
+ width: 340px;
+ height: 30px;
+}
+
+#cr_btn, #db_btn{
+ margin-right: 100px;
+ width: 120px;
+}
+
 /* Sidebar */
 
 aside#sidebar{
@@ -110,13 +205,13 @@ article#main-col{
 
 footer {
  padding:20px;
- margin-top: 0px;
+ //margin-top: 15px;
  color: #ffffff;
  background-color: #e8459d;
  text-align: center;
 }
 
-/*Media Queries*/
+/*Media Queries: In here, you register behaviours you want when the screen size shrinks. So experiment first by adjusting the screen size and observing what happens*/
 
 @media(max-width: 760px){
  header #branding, header nav, header nav li{
@@ -124,9 +219,13 @@ footer {
   text-align: center;
   width: 100%;
  }
+
+ /*As screen size shrinks, we need space between the header border line and the contents*/
+
  header{
   padding-bottom: 20px;
 }
+
  #showcase h1{
   margin-top: 40px;
 }
