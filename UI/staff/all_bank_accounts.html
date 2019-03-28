@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
+<div class="main-container">
 <header>
 <div class="container">
 <div id="branding">
@@ -17,13 +18,22 @@
 </div>
 <nav>
  <ul>
+ <li><a href="./all_bank_accounts.html"> Home </a></li>
+  <li> 
+<div class="dropdown">
+  <img src="../img/you.png" alt="You">
+  <div class="dropdown-content">
+  <a href="./auth/login.html">Log out</a>
+  </div>
+</div>
+  </li>
  </ul>
 </nav>
 </div>
 </header>
 <section id="main">
   <div id="table_div" class="container">
-   <table>
+   <table class="tablemobile">
     <tr>
      <th>Account Name</th>
      <th>Account Number</th>
@@ -71,6 +81,7 @@
 <footer>
 <p> Nawas Naziru Adam, Copyright &copy; 2019 </p>
 </footer>
+</div>
 </body>
 </html>
 
