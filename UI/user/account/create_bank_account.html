@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body>
+<div class="main-container">
 <header>
 <div class="container">
 <div id="branding">
@@ -20,14 +21,24 @@
   <li><a href="../../index.html"> Home </a></li>
   <li><a href="../../about.html"> About </a></li>
   <li><a href="../../services.html"> Services </a></li>
+  <li><a href="../../contact_us.html"> Contact Us </a></li>
+  <li> 
+<div class="dropdown">
+  <img src="../../img/you.png" alt="You">
+  <div class="dropdown-content">
+  <a href="../auth/login.html">Log out</a>
+  </div>
+</div>
+  </li>
  </ul>
 </nav>
 </div>
 </header>
 <section id="main">
  <div class="container">
-   <p id="create_acct">Create Your Brand New Bank Account</p>
+   <p id="create_acct" class="zone">Create Your Brand New Bank Account</p>
    <form class="one_btn_form">
+    <div>Note: All fields marked with asterisk (*) are required.</div>
     <div>
      <label for="name">Full name</label>
      <input type="text" id="name" placeholder="Surname first">
@@ -38,15 +49,15 @@
     </div>
     <div>
      <label for="mobile number">Mobile number</label>
-     <input type="number" id="phone" placeholder="Enter your Mobile phone number">
+     <input class="placeholder_show" type="number" id="phone" placeholder="Enter your Mobile phone number">
     </div>
     <div>
      <label for="Citizenship">Country of citizenship</label>
-     <input type="text" id="citizenship" placeholder="Enter your country of citizenship">
+     <input class="placeholder_show" type="text" id="citizenship" placeholder="Enter your country of citizenship">
     </div>
     <div>
      <label for="Country of residence">Country of residence</label>
-     <input type="text" id="country" placeholder="Enter your country of residence">
+     <input class="placeholder_show" type="text" id="country" placeholder="Enter your country of residence">
     </div>
 <div>
      <label for="city">City</label>
@@ -54,7 +65,7 @@
     </div>
     <div>
      <label for="Permanent Address">Permanent home address</label>
-     <input type="text" id="perm_address" placeholder="Enter your permanent home address">
+     <input class="placeholder_show" type="text" id="perm_address" placeholder="Enter your permanent home address">
     </div>
     <div>
      <label for="Current Address"> Current address</label>
@@ -66,11 +77,16 @@
     </div>
     <div>
      <label for="Next of kin">Relationship to next of kin</label>
-     <input type="text" id="rel_nok" placeholder="Enter your relationship to the next of kin">
+     <input class="placeholder_show" type="text" id="rel_nok" placeholder="Enter your relationship to the next of kin">
     </div>
     <div>
      <label for="Account type">Account type</label>
-     <input type="text" id="account_type" placeholder="Choose your account type">
+     <select type="text" id="account_type">
+      <option>Choose account type</option>
+      <option>Current</option>
+      <option>Savings</option>
+      <option>Fixed deposit</option>
+     </select>
     </div>
     <div>
      <button type="submit">Create account!</button>
@@ -81,5 +97,6 @@
 <footer>
 <p> Nawas Naziru Adam, Copyright &copy; 2019 </p>
 </footer>
+</div>
 </body>
 </html>
