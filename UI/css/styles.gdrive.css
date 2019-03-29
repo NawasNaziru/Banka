@@ -1,0 +1,533 @@
+/*
+
+* {
+ margin: 0;
+ padding: 0;
+}
+*/
+
+body{
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 15px;
+ /* line-height: 1.5; */
+ background-color: #b2beb5;
+ word-wrap: break-word;
+}
+
+£
+header, section, footer {
+
+ margin: 0;
+
+ padding: 1px;
+
+}
+
+/* Global */
+
+.one_btn_form div label:before{
+  content: "*";
+  color: red;
+}
+
+/* 
+.container{
+ width: 80%;
+ margin: auto;
+ overflow: hidden;
+ word-wrap: break-word;
+}
+ */
+
+ul{
+ margin: 0;
+ padding:0;
+}
+
+.dark{
+ padding:15px;
+ background: #35424a;
+ color: #ffffff;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ border-radius: 20px;
+}
+
+ button {
+ border-radius: 10px;
+}
+
+
+.button_1{
+  height:38px;
+  background:#e8459d;
+  border:0;
+  padding-left: 20px;
+  padding-right:20px;
+  color:#ffffff;
+}
+
+
+
+/* header */
+
+header{
+ background: #ff6699;
+ color:#ffffff;
+ padding-top: 30px;
+ min-height: 70px;
+ border-bottom: #9acd32 3px solid;
+}
+
+header a{
+ color: #ffffff;
+ text-decoration: none;
+ text-transform: uppercase;
+ font-size: 16px;
+}
+
+header li{
+ float: left;
+ display: inline;
+ padding: 0  2px 0 20px; £
+}
+
+header #branding{
+ float: left;
+}
+
+header #branding h1{
+ margin: 0;
+}
+
+header nav{
+ float: right;
+ margin-top: 10px;
+}
+
+ £
+header nav ul li a {
+ border-radius: 5px;
+ background-color: #35424a;
+}
+
+header .highlight, header .current a{
+  color: #9acd32;
+  font-weight: bold;
+}
+
+header a:hover{
+ color: #cccccc;
+ font-weight: bold;
+}
+
+/*Showcase*/
+
+ £
+#showcase{
+  min-height: 500px; 
+  background: url('../img/showcase.jpg') no-repeat 0;
+  /* background-color: #ed4568; */
+  background-size: cover;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 0px;
+  border-radius: 20px;
+} 
+ £
+#showcase h1{
+ margin-top: 70px;
+ font-size: 55px;
+ margin-bottom: 50px;
+}
+
+ £
+#showcase p{
+ font-size: 20px;
+ font-weight: bold;
+ margin-top: 70px;
+ margin-bottom: 35px;
+}
+
+#showcase #already_user{
+ color: #ffffff;
+ font-weight: bold;
+ margin-top: 25px;
+ margin-bottom: 35px; £
+}
+  £
+#showcase p#sign{
+ color: #ffffff;
+ margin-top: 5px;
+}
+
+#showcase button, button[type="submit"] {
+ font-size: 20px;
+ /*display: block;*/
+ float: none;
+ width: 150px;
+ margin-bottom: 30px;
+}
+
+.fill {
+ margin-bottom: 0;
+}
+
+#add_acct_sect{
+ margin-bottom: 30px;
+}
+
+add_acct_div{
+ margin-top: 20px;
+ margin-bottom: 20px;
+}
+
+#add_acct{
+ /* margin-left: 200px; 
+ margin-bottom: 30px;
+ margin-top: 70px;
+ float: center; */
+}
+
+#add_acct button{
+ width: 150px;
+}
+
+#account div{
+ margin: 30px 0 30px 0;
+}
+
+.zone{
+ text-align: center;
+ font-weight: bold;
+ margin-top: 30px;
+}
+ £
+input.placeholder_show{
+ width: 250px;
+}
+
+/*Accounts table*/
+
+#table_div{
+ margin-top: 20px;
+ margin-bottom: 20px;
+}
+
+table{
+ font-family:arial, sanserif;
+ border-collapse: collapse;
+ width: 100%;
+ table-layout: fixed;
+}
+
+td, th{
+ border: 1px solid #ccddff;
+ text-align: left;
+ padding: 8px;
+}
+
+td{
+ overflow: hidden;
+ text-overflow: ellipsis;
+ word-wrap: break-word;
+}
+
+
+/* forms */
+
+.one_btn_form div{
+ margin: 30px 0 30px 0;
+}
+
+p#create_acct{
+ text-align: center;
+}
+
+.left_btn_form{
+  margin-right: 70px;
+  margin-bottom: 30px;
+}
+
+#credit_debit div{
+ margin-top: 15px;
+ margin-bottom: 15px;
+}
+
+
+#cr_db_inp{
+ width: 340px;
+ height: 30px;
+}
+
+#cr_btn, #db_btn{
+ margin-right: 100px;
+ width: 120px;
+}
+
+/* Sidebar */
+
+aside#sidebar{
+ float: right;
+ width: 30%;
+ margin-top: 10px;
+}
+
+/* Article */
+
+article#main-col{
+ float: left;
+ width: 65%;
+}
+
+/* section{
+ position: fixed;
+ bottom: 0px;
+ right: 0px;
+ left: 0px;
+ margin-bottom: 0px;
+} */
+
+
+/* Newsletter */
+
+#newsletter{
+  padding: 100px;
+  padding-top: 20px;
+  color:#ffffff;
+  background:#35424a;
+}
+
+#newsletter h1{
+  float:left;
+}
+
+#newsletter form {
+  float:right;
+  margin-top:15px;
+}
+
+#newsletter input[type="email"]{
+  padding:4px;
+  height:25px;
+  width:250px;
+}
+
+/* Boxes */
+#boxes{
+  margin-top: 50px;
+}
+
+#boxes .box{
+  float:left;
+  text-align: center;
+  width:30%;
+  padding:10px;
+}
+
+#boxes .box img{
+  width:90px;
+}
+
+aside#sidebar .quote input, aside#sidebar .quote textarea{
+  width:90%;
+  padding:5px;
+}
+
+
+/* Services */
+ul#services li{
+  list-style: none;
+  padding:20px;
+  border: #cccccc solid 1px;
+  margin-bottom:5px;
+  background:#e6e6e6;
+}
+
+/* footer{
+  padding:20px;
+  margin-top:20px;
+  color:#ffffff;
+  background-color: #ff6699;
+  text-align: center;
+} */
+ 
+
+  £
+* {
+ box-sizing: border-box;
+}
+*:before,
+*:after {
+ box-sizing: border-box;
+}
+
+html,
+body {
+ height: 100%;
+ position: relative;
+}
+
+.main-container {
+ min-height: 100vh; /* will cover the 100% of viewport */
+ overflow: hidden;
+ display: block;
+ position: relative;
+ padding-bottom: 100px; /* height of your footer */
+ word-wrap: break-word;
+}
+
+footer {
+ position: absolute;
+ bottom: 0;
+ width: 100%;
+ color:#ffffff;
+ background-color: #ff6699;
+ text-align: center;
+}
+
+/*
+footer {
+ padding:20px;
+ color: #ffffff;
+ background-color: #e8459d;
+ text-align: center;
+ margin-bottom: 0px;
+ position: fixed;
+ bottom: 0px;
+ right: 0px;
+ left: 0px;
+ height: 60px;
+ 
+} */
+
+ 
+/*Media Queries: In here, you register behaviours you want when the screen size shrinks. So experiment first by adjusting the screen size and observing what happens*/
+
+@media(max-width: 760px){
+
+ body{
+  font-size: 10px;
+}
+
+ header #branding, header nav, header nav li #newsletter h1,
+  #newsletter form,
+  #boxes .box,
+  article#main-col,
+  aside#sidebar {
+  float: none;
+  text-align: center;
+  width: 100%;
+ }
+
+£
+ #newsletter button, .quote button{
+    display:block;
+    width:100%;
+  }
+£
+  #newsletter form input[type="email"], .quote input, .quote textarea{
+    width:100%;
+    margin-bottom:5px;
+  }
+
+ /*As screen size shrinks, we need space between the header border line and the contents*/
+
+ header{
+  padding-bottom: 20px;
+}
+
+ #showcase h1{
+  margin-top: 40px;
+  font-size: 20px;
+ }
+ 
+input{
+ width: 30px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  white-space:pre-line;  
+  position:relative;
+  top:-1000px;
+  
+}
+::-moz-placeholder { /* Firefox 19+ */
+     white-space:pre-line;  
+  position:relative;
+  top:-7px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    white-space:pre-line;  
+  position:relative;
+  top:-7px;
+}
+:-moz-placeholder { /* Firefox 18- */
+     white-space:pre-line;  
+  position:relative;
+  top:-7px;
+}
+
+ 
+ #showcase button{
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+aside#sidebar{
+ float: right;
+ width: 50%;
+ margin-top: 10px;
+}
+
+article#main-col{
+ float: left;
+ width: 45%;
+}
+
+}
+
+@media only screen and (max-width: 480px){
+ .tablemobile{
+   overflow-x: auto;
+   display: block;
+ }
+
+#cr_db_inp{
+ width: 80%;
+ height: 30px;
+}
+
+#cr_btn, #db_btn{
+ margin-right: 5px;
+ width: 50%;
+ }
+
+}
+
+
+/* @media(max-width: 300px){
+footer {
+ position: initial;
+ height: 50px;
+ padding:20px;
+ color: #ffffff;
+ background-color: #e8459d;
+ text-align: center;
+}
+
+footer {
+ position: fixed;
+ margin-bottom: 0px;
+ bottom: 0px;
+ left: 0px;
+ right: 0px;
+ height: 50px;
+ padding:20px;
+ color: #ffffff;
+ background-color: #e8459d;
+ text-align: center;
+}
+
+}  */
