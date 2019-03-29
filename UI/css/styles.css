@@ -1,232 +1,490 @@
-body{
- font-family: Arial, Helvetica, sans-serif;
- font-size: 15px;
- line-height: 1.5;
- padding: 0;
- margin: 0;
- background-color: #f4f4f4;
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	line-height: 1.5;
+	padding: 0;
+	margin: 0;
+	background-color: #b2beb5;
+	word-wrap: break-word;
 }
+
+.dropdown img {
+	border-radius: 50%;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #ff6699;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.blackfont {
+	color: #000000;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
 
 /* Global */
 
-.container{
- width: 80%;
- margin: auto;
- overflow: hidden;
+.container {
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+	/* word-wrap: break-word; */
+	;
 }
 
-ul{
- margin: 0;
- padding:0;
+button {
+	border-radius: 20px;
 }
 
-.dark{
- padding:15px;
- background: #35424a;
- color: #ffffff;
- margin-top: 10px;
- margin-bottom: 10px;
+ul {
+	margin: 0;
+	padding: 0;
 }
+
+.one_btn_form div label:before {
+	content: "*";
+	color: red;
+}
+
+.button_1 {
+	height: 38px;
+	background: #e8491d;
+	border: 0;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #ffffff;
+}
+
+.dark {
+	padding: 15px;
+	background: #35424a;
+	color: #ffffff;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 20px;
+}
+
 
 /* header */
 
-header{
- background: #35424a;
- color:#ffffff;
- padding-top: 30px;
- min-height: 70px;
- border-bottom: #e8459d 3px solid;
+header {
+	background: #ff6699;
+	color: #ffffff;
+	padding-top: 30px;
+	min-height: 170px;
+	border-bottom: #9acd32 3px solid;
 }
 
-header a{
- color: #ffffff;
- text-decoration: none;
- text-transform: uppercase;
- font-size: 16px;
+header a {
+	color: #ffffff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 16px;
 }
 
-header li{
- float: left;
- display: inline;
- padding: 0  2px 0 20px;
+header li {
+	float: left;
+	display: inline;
+	padding: 0 2px 0 20px;
 }
 
-header #branding{
- float: left;
+header #branding {
+	float: left;
 }
 
-header #branding h1{
- margin: 0;
+header #branding h1 {
+	margin: 0;
 }
 
-header nav{
- float: right;
- margin-top: 10px;
+header nav {
+	float: right;
+	margin-top: 10px;
 }
 
-header .highlight, header .current a{
-  color: #e8459d;
-  font-weight: bold;
+header .highlight,
+header .current a {
+	color: #9acd32;
+	font-weight: bold;
 }
 
-header a:hover{
- color: #cccccc;
- font-weight: bold;
+header a:hover {
+	color: #cccccc;
+	font-weight: bold;
 }
+
 
 /*Showcase*/
 
-#showcase{
-  min-height: 400px;
-  background: url('../img/showcase.jpg') no-repeat 0 -400px;
-  text-align: center;
-  color: #ffffff;
+#showcase {
+	min-height: 400px;
+	background: url('../img/showcase.jpg') no-repeat 0;
+	background-size: cover;
+	text-align: center;
+	color: #ffffff;
+	padding: 30px;
 }
 
-#showcase h1{
- margin-top: 100px;
- font-size: 55px;
- margin-bottom: 10px;
+#showcase h1 {
+	margin-top: 40px;
+	font-size: 55px;
+	margin-bottom: 6px;
+	font-weight: bold;
 }
 
-#showcase p{
- font-size: 20px;
+#showcase p {
+	font-size: 22px;
+	font-weight: bold;
 }
 
-#showcase #already_user{
- color: #e8459d;
- font-weight: bold;
- margin-top: 25px;
- margin-bottom: 25px;
+#showcase #already_user {
+	color: #ffffff;
+	font-weight: bold;
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
 
-#showcase button{
- font-size: 20px;
- //display: block;
- float: none;
- width: 150px;
- margin-bottom: 15px;
+#showcase button {
+	font-size: 20px;
+	//display: block;
+	float: none;
+	width: 150px;
+	margin-bottom: 40px;
 }
 
-#add_acct_sect{
- margin-bottom: 30px;
+#showcase img {
+	border-radius: 20px;
 }
 
-add_acct_div{
- margin-top: 20px;
- margin-bottom: 20px;
+#add_acct_sect {
+	margin-bottom: 30px;
 }
 
-#add_acct{
- margin-left: 350px;
- margin-bottom: 30px;
- margin-top: 70px;
+add_acct_div {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
-#add_acct button{
- height: 70px;
+#add_acct {
+	/* margin-left: 350px; */
+	margin-bottom: 30px;
+	margin-top: 70px;
 }
 
-#account div{
- margin: 30px 0 30px 0;
+#add_acct button {
+	width: 120px;
 }
 
-.zone{
- text-align: center;
+#account div {
+	margin: 30px 0 30px 0;
 }
+
+.zone {
+	text-align: center;
+	font-weight: bold;
+	margin-top: 30px;
+}
+
 
 /*Accounts table*/
 
-#table_div{
- margin-top: 20px;
- margin-bottom: 20px;
+#table_div {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
-table{
- font-family:arial, sanserif;
- border-collapse: collapse;
- width: 100%;
+table {
+	font-family: arial, sanserif;
+	border-collapse: collapse;
+	width: 100%;
+	table-layout: fixed;
 }
 
-td, th{
- border: 1px solid #ccddff;
- text-align: left;
- padding: 8px;
+td,
+th {
+	border: 1px solid #ccddff;
+	text-align: left;
+	padding: 8px;
 }
 
-
+td {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+}
 
 
 /* forms */
 
-.one_btn_form div{
- margin: 30px 0 30px 0;
+.one_btn_form div {
+	margin: 30px 0 30px 0;
 }
 
-p#create_acct{
- text-align: center;
+p#create_acct {
+	text-align: center;
 }
 
-.left_btn_form{
-  margin-right: 70px;
-  margin-bottom: 30px;
+.left_btn_form {
+	margin-right: 70px;
+	margin-bottom: 30px;
 }
 
-#credit_debit div{
- margin-top: 15px;
- margin-bottom: 15px;
+#credit_debit div {
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
-
-#cr_db_inp{
- width: 340px;
- height: 30px;
+#cr_db_inp {
+	width: 340px;
+	height: 30px;
 }
 
-#cr_btn, #db_btn{
- margin-right: 100px;
- width: 120px;
+#cr_btn,
+#db_btn {
+	margin-right: 30px;
+	width: 120px;
+}
+
+* Newsletter */
+/* #newsletter{
+  /*padding:15px;*/
+
+//padding-top: 20px;
+color:#ffffff;
+background-color: #000000;
+padding-top: 30px;
+min-height: 120px;
+
+}
+*/ #newsletter {
+	padding: 15px;
+	color: #ffffff;
+	background: #35424a;
+}
+#newsletter h1 {
+	float: left;
+}
+#newsletter form {
+	float: right;
+	margin-top: 15px;
+}
+#newsletter input[type="email"] {
+	padding: 4px;
+	height: 25px;
+	width: 250px;
+}
+
+/* Boxes */
+#boxes {
+	margin-top: 20px;
+}
+#boxes .box {
+	float: left;
+	text-align: center;
+	width: 30%;
+	padding: 10px;
+}
+#boxes .box img {
+	width: 90px;
 }
 
 /* Sidebar */
-
-aside#sidebar{
- float: right;
- width: 30%;
- margin-top: 10px;
+aside#sidebar {
+	float: right;
+	width: 30%;
+	margin-top: 10px;
+}
+aside#sidebar .quote input,
+aside#sidebar .quote textarea {
+	width: 90%;
+	padding: 5px;
 }
 
 /* Article */
-
-article#main-col{
- float: left;
- width: 65%;
+article#main-col {
+	float: left;
+	width: 65%;
 }
 
+/* Services */
+ul#services li {
+	list-style: none;
+	padding: 20px;
+	border: #cccccc solid 1px;
+	margin-bottom: 5px;
+	background: #e6e6e6;
+}
+* {
+	box-sizing: border-box;
+}
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+html,
+body {
+	height: 100%;
+	position: relative;
+}
+.main-container {
+	min-height: 100vh;
+	/* will cover the 100% of viewport */
+	
+	overflow: hidden;
+	display: block;
+	position: relative;
+	padding-bottom: 100px;
+	/* height of your footer */
+	
+	word-wrap: break-word;
+}
 footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	color: #ffffff;
+	background-color: #ff6699;
+	text-align: center;
+}
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	color: #ffffff;
+	background-color: #ff6699;
+	text-align: center;
+}
+
+/* footer {
  padding:20px;
  //margin-top: 15px;
  color: #ffffff;
  background-color: #e8459d;
  text-align: center;
-}
+} */
 
 /*Media Queries: In here, you register behaviours you want when the screen size shrinks. So experiment first by adjusting the screen size and observing what happens*/
-
-@media(max-width: 760px){
- header #branding, header nav, header nav li{
-  float: none;
-  text-align: center;
-  width: 100%;
- }
-
- /*As screen size shrinks, we need space between the header border line and the contents*/
-
- header{
-  padding-bottom: 20px;
+@media(max-width: 760px) {
+	body {
+		font-size: 10px;
+	}
+	
+	header #branding,
+	header nav,
+	header nav li,
+	#newsletter h1,
+	#newsletter form,
+	#boxes .box,
+	article#main-col,
+	aside#sidebar {
+		float: none;
+		text-align: center;
+		width: 100%;
+	}
+	/*As screen size shrinks, we need space between the header border line and the contents*/
+	
+	header {
+		padding-bottom: 20px;
+	}
+	
+	#showcase h1 {
+		margin-top: 40px;
+	}
+	
+	#showcase {
+		padding-bottom: 20px;
+	}
+	
+	#btn_1 {
+		margin-bottom: 20px;
+	}
+	
+	aside#sidebar {
+		float: right;
+		width: 50%;
+		margin-top: 10px;
+	}
+	
+	article#main-col {
+		float: left;
+		width: 45%;
+	}
 }
-
- #showcase h1{
-  margin-top: 40px;
+@media only screen and (max-width: 480px) {
+	/* label {
+ margin-bottom: 40px;
+} */
+	
+	.tablemobile {
+		overflow-x: auto;
+		display: block;
+	}
+	
+	#cr_db_inp {
+		width: 80%;
+		height: 30px;
+	}
+	
+	#cr_btn,
+	#db_btn {
+		margin-top: 30px;
+		width: 50%;
+	}
+	
+	#btn_1 {
+		margin-bottom: 50px;
+	}
+	
+	 ::-webkit-input-placeholder {
+		/* Chrome/Opera/Safari */
+		white-space: pre-line;
+		position: relative;
+		top: -1000px;
+	}
+	
+	 ::-moz-placeholder {
+		/* Firefox 19+ */
+		white-space: pre-line;
+		position: relative;
+		top: -7px;
+	}
+	
+	 :-ms-input-placeholder {
+		/* IE 10+ */
+		white-space: pre-line;
+		position: relative;
+		top: -7px;
+	}
+	
+	 :-moz-placeholder {
+		/* Firefox 18- */
+		white-space: pre-line;
+		position: relative;
+		top: -7px;
+	}
 }
+@media only screen and (max-width: 200px) {
+	#showcase button {
+		width: 70%;
+		height: 40px;
+		border-radius: 5px;
+		margin-bottom: 20px;
+		font-size: 90%;
+	}
+	
+	input {
+		width: 80%;
+	}
 }
