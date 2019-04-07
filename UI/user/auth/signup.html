@@ -30,27 +30,29 @@
         </header>
         <section id="main">
             <div class="container">
-                <p class="zone"> Already a member? Please <a href="login.html">Sign in</a> instead.</p>
-                <form class="one_btn_form">
+                <p id="signup-msg" class="zone"> Already a member? Please <a href="login.html">Sign in</a> instead.</p>
+                <!--<form class="one_btn_form" onsubmit="register()">-->
+                <form id="signupFormId" class="one_btn_form" method="POST" action="/api/v1/users/auth/signup">
                     <div>Note: All fields marked with asterisk (*) are required.</div>
                     <div>
                         <label for="name">First name</label>
-                        <input type="text" id="name" placeholder="Enter your first name">
+                        <input type="text" name="firstName" placeholder="Enter your first name" value="" />
                     </div>
                     <div>
                         <label for="name">Last name</label>
-                        <input type="text" id="name" placeholder="Enter your last name">
+                        <input type="text" name="lastName" placeholder="Enter your last name" value="" />
                     </div>
                     <div>
                         <label for="email">Email address</label>
-                        <input type="email" id="email" placeholder="Enter email">
+                        <input type="email" name="email" placeholder="Enter email" value="" />
                     </div>
                     <div>
                         <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Password">
+                        <input type="password" name="password" placeholder="Password" value="" />
                     </div>
                     <div>
-                        <button type="submit">Sign up!</button>
+                       <!--<button type="submit" id="signup_btn">Sign up!</button>-->
+                       <input type="submit" id="signup_btn" value="Sign Up!" />
                     </div>
                 </form>
             </div>
@@ -59,6 +61,7 @@
             <p> Nawas Naziru Adam, Copyright &copy; 2019 </p>
         </footer>
     </div>
+<script src="../../scripts/scripts.js"></script>
 </body>
 
 </html>
