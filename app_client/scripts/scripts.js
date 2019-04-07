@@ -43,6 +43,7 @@ document.forms['signupFormId'].addEventListener('submit', (event) => {
     saveToken(json.token);
     //console.log(json);
     document.getElementById('signup-msg').innerHTML = "Wow! You have Successfully registered!";
+    
     //alert(json);
   }).catch(error =>
       // TODO handle error 
