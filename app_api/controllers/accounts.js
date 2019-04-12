@@ -27,6 +27,12 @@ module.exports.create = function (req, res) {
       error: 'First name, last name, email and accountType are required, please!',
     });
   } else {
+    if (!Users[req.body.email]) {
+      sendJSONresponse(res, 404, {
+        status: 404,
+        error: 'You have not signed up. Sign up first to create an account!',
+      });
+    }
 
     const account = {};
 
