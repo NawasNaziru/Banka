@@ -1,7 +1,5 @@
 /* eslint-disable func-names */
 /* eslint-disable no-undef */
-
-// Below are the predefined generic functions to use in the feature modules
 const sendJSONresponse = function (res, status, content) {
   res.status(status);
   res.json(content);
@@ -19,4 +17,42 @@ const hasId = function (arr, id) {
     }
   }
   return false;
+};
+
+
+module.exports.create = function (req, res) {
+  if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.accountType) {
+    sendJSONresponse(res, 400, {
+      status: 400,
+      error: 'First name, last name, email and accountType are required, please!',
+    });
+  } else {
+    if (!Users[req.body.email]) {
+      sendJSONresponse(res, 404, {
+        status: 404,
+        error: 'You have not signed up. Sign up first to create an account!',
+      });
+    }
+
+    const account = {};
+
+    account.accountNumber = nextAccount;
+    nextAccount += 1;
+    account.firstName = req.body.firstName;
+    account.lastName = req.body.lastName;
+    account.email = req.body.email;
+    account.type = req.body.accountType;
+    account.openingBalance = 0.00;
+    account.createdOn = timeStamp();
+    account.owner = Users[req.body.email].id;
+    account.status = 'active';
+    account.balance = 0.00;
+    account.id = Object.keys(Accounts).length;
+
+
+    Accounts[account.accountNumber] = account;
+
+
+    sendJSONresponse(res, 201, { status: 201, data: account });
+  }
 };
