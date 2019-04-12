@@ -147,7 +147,7 @@ module.exports.delete = function (req, res) {
         || hasId(adminIds, parseInt(regUserEmail.id, 10)))) {
       sendJSONresponse(res, 404, {
         status: 404,
-        error: 'Register as Staff or Admin first, using your privately assigned Id!',
+        error: 'Register as Staff or Admin first, using your privately assigned Id!'
       });
       return;
     }
