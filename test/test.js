@@ -1,224 +1,189 @@
-var assert = require("assert");
-let chai = require("chai");
-let chaiHttp = require("chai-http");
-let server = require("../app");
-let should = chai.should();
+/* eslint-disable no-console */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-undef */
 
+// eslint-disable-next-line no-unused-vars
+const assert = require('assert');
 
+// eslint-disable-next-line no-unused-vars
+const chai = require('chai');
 
+// eslint-disable-next-line no-unused-vars
+const should = chai.should();
+const { expect } = chai;
+const chaiHttp = require('chai-http');
+const server = require('../app');
+
+const accountNumber = 2000000000;
 
 chai.use(chaiHttp);
-describe("Banka", function () {
-    describe("User Operations", function () {
-
-        var user = { 
-        “id” ​ : "201",
-        “email” ​ : "abid1@gmail.com",
-        “firstName” ​ : "Abid",
-        “lastName” ​ : "Awwab",
-        “password” ​ : "111aaa",
-        “type” ​ : "client",
-        “isAdmin” ​: "false"
-        };
-
-        ​var account = {
-            “id” ​ :​ ​ "1",  
-            “accountNumber” ​ :​ ​ "3030101090"​ ,
-            ​“createdOn” ​ :​ ​ "24-10-2018"​ ,
-            “owner” ​ :​ ​ "1"​,     // user id   
-            ​“type” ​ :​ ​ "current"​,     // savings, current 
-            ​“status” ​ :​ ​"active" ,   // draft, active, or dormant  
-            “balance” ​ :​ ​ "1956854.68"
-        }
-
-            it("Should sign up a user", (done) => {
-                    chai.request(server)
-                        .post("/api/v1/auth/signup")
-                        .send(user)
-                        .end((err, res) => {
-                            res.should.have.status(200);
-                            result.body.data.length.should.greaterThan(0);
-                            console.log("Response Body:", res.body);
-
-                        })
-                
-                done()
-            })
-
-        it("Should login a user", (done) => {
-            chai.request(server)
-                .post("/api/v1/auth/signin")
-                .send(user)
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    result.body.data.length.should.greaterThan(0);
-                            console.log("Response Body:", res.body);
-                          })
-                
-                done()
-            })
-
-            it("Should create bank account for user", (done) => {
-                chai.request(server)
-                    .post("/api/v1/accounts")
-                    .send(user)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        console.log("Response Body:", res.body);
-
-                    })
-            
-            done()
+describe('Banka API endpoints', () => {
+  describe('User Operations', () => {
+    it('Should sign up a user', (done) => {
+      chai.request(server).keepOpen()
+        .post('/v1/users/auth/signup')
+        .send({
+          firstName: 'Ausat',
+          lastName: 'Adam',
+          email: 'ausatnaziru@gmail.com',
+          password: '123456a',
+          id: 6,
         })
+        .end((err, res) => {
+          expect(err).to.be.null;
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+        });
 
-    })
+      done();
+    });
 
-    describe("staff Operations", function () {
-
-        var staff= { 
-        “id” ​ : "1",
-        “email” ​ : "faraday1@gmail.com",
-        “firstName” ​ : "Faraday",
-        “lastName” ​ : "Einstein",
-        “password” ​ : "z_zx12_g",
-        “type” ​ : "staff",
-        “isAdmin” ​: "true"
-        };
-
-        ​var account = {
-            “id” ​ :​ ​ "1",  
-            “accountNumber” ​ :​ ​ "3030101090"​ ,
-            ​“createdOn” ​ :​ ​ "24-10-2018"​ ,
-            “owner” ​ :​ ​ "1"​,     // user id   
-            ​“type” ​ :​ ​ "current"​,     // savings, current 
-            ​“status” ​ :​ ​"active" ,   // draft, active, or dormant  
-            “balance” ​ :​ ​ "1956854.68"
-        }
-
-            it("Should activate an account", (done) => {
-                    chai.request(server)
-                        .patch("/api/v1/accounts/" + account.accountNumber + "/activate")
-                        .send(staff)
-                        .end((err, res) => {
-                            res.should.have.status(200);
-                            console.log("Response Body:", res.body);
-
-                        })
-                
-                done()
-            })
-
-            it("Should deactivate an account", (done) => {
-                chai.request(server)
-                    .patch("/api/v1/accounts/" + account.accountNumber + "/deactivate")
-                    .send(staff)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        console.log("Response Body:", res.body);
-
-                    })
-            
-            done()
+    it('Should login a user', (done) => {
+      chai.request(server).keepOpen()
+        .post('/v1/users/auth/signin')
+        .send({
+          email: 'nawasnaziru@gmail.com',
+          password: '123456',
         })
+        .end((err, res) => {
+          expect(err).to.be.null;
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+        });
 
-        it("Should credit a bank account", (done) => {
-            chai.request(server)
-                .post("/api/v1/transactions/" + account.accountNumber + "/credit")
-                .query({'amount': '20000'})
-                .send(staff)
-                .end((err, res) => {
-                    res.should.have.status(200);
-                            console.log("Response Body:", res.body);
-                          })
-                
-                done()
-            })
+      done();
+    });
 
-            it("Should debit a bank account", (done) => {
-                chai.request(server)
-                    .post("/api/v1/transactions/" + account.accountNumber + "/debit")
-                    .query({'amount': '-20000'})
-                    .send(staff)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                                console.log("Response Body:", res.body);
-                              })
-                    
-                    done()
-                })
-
-                it("Should delete a bank account", (done) => {
-                    chai.request(server)
-                        .delete("/api/v1/accounts/" + account.accountNumber)
-                        .end((err, result) => {
-                            res.should.have.status(200);
-                            console.log("Deleted Particlar account using /GET/accounts/:accountID ::::", result.body)
-                                  })
-                        
-                        done()
-                    })
-
-    })
-
-    describe("Admin Operations", function () {
-
-        var admin= { 
-        “id” ​ : "1",
-        “email” ​ : "faraday1@gmail.com",
-        “firstName” ​ : "Faraday",
-        “lastName” ​ : "Einstein",
-        “password” ​ : "z_zx12_g",
-        “type” ​ : "staff",
-        “isAdmin” ​: "true"
-        };
-
-        ​var account = {
-            “id” ​ :​ ​ "1",  
-            “accountNumber” ​ :​ ​ "3030101090"​ ,
-            ​“createdOn” ​ :​ ​ "24-10-2018"​ ,
-            “owner” ​ :​ ​ "1"​,     // user id   
-            ​“type” ​ :​ ​ "current"​,     // savings, current 
-            ​“status” ​ :​ ​"active" ,   // draft, active, or dormant  
-            “balance” ​ :​ ​ "1956854.68"
-        }
-
-            it("Should activate an account", (done) => {
-                    chai.request(server)
-                        .patch("/api/v1/accounts/" + account.accountNumber + "/activate")
-                        .send(admin)
-                        .end((err, res) => {
-                            res.should.have.status(200);
-                            console.log("Response Body:", res.body);
-
-                        })
-                
-                done()
-            })
-
-            it("Should deactivate an account", (done) => {
-                chai.request(server)
-                    .patch("/api/v1/accounts/" + account.accountNumber + "/deactivate")
-                    .send(admin)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        console.log("Response Body:", res.body);
-
-                    })
-            
-            done()
+    it('Should create bank account for user', (done) => {
+      chai.request(server).keepOpen()
+        .post('/api/v1/accounts')
+        .send({
+          firstName: 'nawas',
+          lastName: 'adam',
+          email: 'nawasnaziru@gmail.com',
+          accountType: 'savings',
         })
+        .end((err, res) => {
+          expect(err).to.be.null;
+          res.should.have.status(201);
+          expect(res).to.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('data');
+          res.body.should.have.property('status');
+          res.body.data.should.be.a('object');
+          res.body.data.should.have.property('accountNumber');
+          res.body.data.should.have.property('id');
+          res.body.data.should.have.property('firstName');
+          res.body.data.should.have.property('lastName');
+          res.body.data.should.have.property('status');
+          res.body.data.should.have.property('type');
+          res.body.data.should.have.property('owner');
+          res.body.data.id.should.be.a('number');
+          res.body.data.firstName.should.equal('nawas');
+          res.body.data.lastName.should.equal('adam');
+          console.log('Response Body:', res.body);
+        });
 
-        it("Should delete a bank account", (done) => {
-            chai.request(server)
-                .delete("/api/v1/accounts/" + account.accountNumber)
-                .end((err, result) => {
-                    res.should.have.status(200);
-                    console.log("Deleted Particlar account using /GET/accounts/:accountID ::::", result.body)
-                          })
-                
-                done()
-      
-            })
-    })
+      done();
+    });
+  });
 
+  describe('Staff only operations', () => {
+    it('Should credit a bank account', (done) => {
+      chai.request(server).keepOpen()
+        .post('/api/v1/transactions/2000000000/credit')
+        .send({
+          amount: '5400',
+          email: 'linustorvalds@linux.com',
+        })
+        .end((err, res) => {
+          res.should.have.status(201);
+          expect(res).to.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('data');
+          res.body.should.have.property('status');
+          res.body.data.should.be.a('object');
+          res.body.data.should.have.property('accountNumber');
+          res.body.data.should.have.property('amount');
+          res.body.data.should.have.property('newBalance');
+          res.body.data.should.have.property('oldBalance');
+          res.body.data.should.have.property('cashier');
+          res.body.data.should.have.property('transactionType');
+          res.body.data.transactionType.should.be.a('string');
+          res.body.data.amount.should.equal(5400);
+          console.log('Response Body:', res.body);
+        });
+
+      done();
+    });
+
+    it('Should debit a bank account', (done) => {
+      chai.request(server).keepOpen()
+        .post('/api/v1/transactions/2000000000/debit')
+        .send({
+          amount: '5400',
+          email: 'linustorvalds@linux.com',
+        })
+        .end((err, res) => {
+          res.should.have.status(201);
+          expect(res).to.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('data');
+          res.body.should.have.property('status');
+          res.body.data.should.be.a('object');
+          res.body.data.should.have.property('accountNumber');
+          res.body.data.should.have.property('amount');
+          res.body.data.should.have.property('newBalance');
+          res.body.data.should.have.property('oldBalance');
+          res.body.data.should.have.property('cashier');
+          res.body.data.should.have.property('transactionType');
+          res.body.data.transactionType.should.be.a('string');
+          res.body.data.amount.should.equal(5400);
+
+          console.log('Response Body:', res.body);
+        });
+
+      done();
+    });
+  });
+
+  describe('Admin and staff Operations', () => {
+    it('Should toggle account status', (done) => {
+      chai.request(server).keepOpen()
+        .patch(`/api/v1/accounts/${accountNumber}`)
+        .send({
+          email: 'linustorvalds@linux.com',
+        })
+        .end((err, res) => {
+          res.should.have.status(201);
+          expect(res).to.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('data');
+          res.body.should.have.property('status');
+          res.body.data.should.be.a('object');
+          res.body.data.should.have.property('accountNumber');
+          res.body.data.should.have.property('status');
+
+          console.log('Response Body:', res.body);
+        });
+
+      done();
+    });
+
+    it('Should delete a bank account', (done) => {
+      chai.request(server).keepOpen()
+        .delete(`/api/v1/accounts/${accountNumber}`)
+        .send({
+          email: 'linustorvalds@linux.com',
+        })
+        .end((err, res) => {
+          expect(err).to.be.null;
+          res.should.have.status(200);
+          res.body.should.have.property('message');
+          res.body.message.should.be.a('string');
+        });
+
+      done();
+    });
+  });
 });

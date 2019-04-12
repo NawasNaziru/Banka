@@ -42,56 +42,66 @@
         <section id="main">
             <div class="container">
                 <p id="create_acct" class="zone">Create Your Brand New Bank Account</p>
-                <form class="one_btn_form">
+                <form id="accountFormId" class="one_btn_form" method="POST" action="localhost:3000/api/v1/accounts">
                     <div>Note: All fields marked with asterisk (*) are required.</div>
                     <div>
-                        <label for="name">Full name</label>
-                        <input type="text" id="name" placeholder="Surname first">
+                        <label for="name">First name</label>
+                        <input type="text" name="firstName" placeholder="First name">
+                    </div>
+                    <div>
+                        <label for="name">Last name</label>
+                        <input type="text" name="lastName" placeholder="Last name">
                     </div>
                     <div>
                         <label for="email">Email address</label>
-                        <input type="email" id="email" placeholder="Enter email">
+                        <input type="email" name="email" placeholder="Enter email">
                     </div>
                     <div>
                         <label for="mobile number">Mobile number</label>
-                        <input class="placeholder_show" type="number" id="phone" placeholder="Enter your Mobile phone number">
+                        <input class="placeholder_show" type="number" name="phone" placeholder="Enter your Mobile phone number">
                     </div>
                     <div>
                         <label for="Citizenship">Country of citizenship</label>
-                        <input class="placeholder_show" type="text" id="citizenship" placeholder="Enter your country of citizenship">
+                        <input class="placeholder_show" type="text" name="citizenship" placeholder="Enter your country of citizenship">
                     </div>
                     <div>
                         <label for="Country of residence">Country of residence</label>
-                        <input class="placeholder_show" type="text" id="country" placeholder="Enter your country of residence">
+                        <input class="placeholder_show" type="text" name="country" placeholder="Enter your country of residence">
                     </div>
                     <div>
                         <label for="city">City</label>
-                        <input type="text" id="city" placeholder="Enter your city">
+                        <input type="text" name="city" placeholder="Enter your city">
                     </div>
                     <div>
                         <label for="Permanent Address">Permanent home address</label>
-                        <input class="placeholder_show" type="text" id="perm_address" placeholder="Enter your permanent home address">
+                        <input class="placeholder_show" type="text" name="perm_address" placeholder="Enter your permanent home address">
                     </div>
                     <div>
                         <label for="Current Address"> Current address</label>
-                        <input type="text" id="perm_address" placeholder="Enter your current address">
+                        <input type="text" name="curr_address" placeholder="Enter your current address">
                     </div>
                     <div>
                         <label for="Next of kin"> Name of next of kin</label>
-                        <input type="text" id="perm_address" placeholder="Enter name of next of kin">
+                        <input type="text" name="nok" placeholder="Enter name of next of kin">
                     </div>
                     <div>
                         <label for="Next of kin">Relationship to next of kin</label>
-                        <input class="placeholder_show" type="text" id="rel_nok" placeholder="Enter your relationship to the next of kin">
+                        <input class="placeholder_show" type="text" name="rel_nok" placeholder="Enter your relationship to the next of kin">
                     </div>
+ <!--
                     <div>
                         <label for="Account type">Account type</label>
-                        <select type="text" id="account_type">
+                        <select type="text" name="account_type">
                             <option>Choose account type</option>
                             <option>Current</option>
                             <option>Savings</option>
                             <option>Fixed deposit</option>
                         </select>
+                    </div>
+-->
+                    <div>
+                        <label for="Account type"> Account type </label>
+                        <input type="text" name="accountType" placeholder="Enter account type">
                     </div>
                     <div>
                         <button type="submit">Create account!</button>

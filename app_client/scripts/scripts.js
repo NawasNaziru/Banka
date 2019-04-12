@@ -32,6 +32,7 @@ var logout = function() {
   localStorage.removeItem('banka-token');
 };
 
+/* uncomment to handle server response in UI
 
 document.forms['signupFormId'].addEventListener('submit', (event) => {
   event.preventDefault();
@@ -50,4 +51,4 @@ document.forms['signupFormId'].addEventListener('submit', (event) => {
       alert("there was a problem")
  );
  // alert("stopped");
-});
+}); */

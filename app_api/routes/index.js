@@ -1,30 +1,28 @@
-var express = require('express');
-var router = express.Router();
-var jwt = require('express-jwt');
-var auth = jwt({
-  secret: process.env.JWT_SECRET,
-  userProperty: 'payload'
-});
+const express = require('express');
 
-var ctrlAuth = require('../controllers/authentication');
-/* var ctrlLocations = require('../controllers/locations');
-var ctrlReviews = require('../controllers/reviews');
-var ctrlAuth = require('../controllers/authentication');
+const router = express.Router();
 
-router.get('/locations', ctrlLocations.locationsListByDistance);
-router.post('/locations', ctrlLocations.locationsCreate);
-router.get('/locations/:locationid', ctrlLocations.locationsReadOne);
-router.put('/locations/:locationid', ctrlLocations.locationsUpdateOne);
-router.delete('/locations/:locationid', ctrlLocations.locationsDeleteOne);
+const ctrlAuth = require('../controllers/authentication');
+const ctrlAcc = require('../controllers/accounts');
+const ctrlTxn = require('../controllers/transactions');
 
-// reviews
-router.post('/locations/:locationid/reviews', auth, ctrlReviews.reviewsCreate);
-router.get('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsReadOne);
-router.put('/locations/:locationid/reviews/:reviewid', auth, ctrlReviews.reviewsUpdateOne);
-router.delete('/locations/:locationid/reviews/:reviewid', auth, ctrlReviews.reviewsDeleteOne); */
 
-// authentication
+// signup route
+
+router.post('/v1/users/auth/signin', ctrlAuth.login);
+
+// sign in route
 router.post('/v1/users/auth/signup', ctrlAuth.register);
-// router.post('/login', ctrlAuth.login);
+
+// account routes
+
+router.post('/v1/accounts', ctrlAcc.create);
+router.patch('/v1/accounts/:accountNumber', ctrlAcc.activate_deactivate);
+router.delete('/v1/accounts/:accountNumber', ctrlAcc.delete);
+
+// transaction routes
+router.post('/v1/transactions/:accountNumber/debit', ctrlTxn.debit);
+router.post('/v1/transactions/:accountNumber/credit', ctrlTxn.credit);
+
 
 module.exports = router;

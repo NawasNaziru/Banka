@@ -31,15 +31,15 @@
         <section id="main">
             <div class="container">
                 <p class="zone"> Not yet a member? Please <a href="signup.html">Sign up</a> instead.</p>
-                <form class="one_btn_form">
+                <form id="signupFormId" class="one_btn_form" method="POST" action="/api/v1/users/auth/signin">
                     <div>Note: All fields marked with asterisk (*) are required.</div>
                     <div>
                         <label for="email">Email address</label>
-                        <input type="email" id="email" placeholder="Enter email">
+                        <input type="email" id="email" name="email" placeholder="Enter email">
                     </div>
                     <div>
                         <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Password">
+                        <input type="password" id="password" name="password" placeholder="Password">
                     </div>
                     <div>
                         <button type="submit">Sign in!</button>

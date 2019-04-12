@@ -1,20 +1,67 @@
 require('dotenv').load();
-let express = require('express');
-let path = require('path');
-let favicon = require('serve-favicon');
-let logger = require('morgan');
-let cookieParser = require('cookie-parser');
-let bodyParser = require('body-parser');
-let uglifyJs = require('uglify-js');
-let fs = require('fs');
-let passport = require('passport');
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
 require('./app_api/config/passport');
 
-let routesApi = require('./app_api/routes/index');
+const routesApi = require('./app_api/routes/index');
 
-let app = express();
-global.Users = {};
+const app = express();
+
+/* Below are Non-persistent data structures of choice.
+Some of them are prefilled with some data for mocha and chai http test.
+This is because chai always restart the node server for each request.
+Hence, the need for some test data, independent of previous request. */
+
+global.Users = {
+  'nawasnaziru@gmail.com': {
+    token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOjAsImVtYWlsIjoibmF3YXNuYXppcnVAZ21haWwuY29tIiwibmFtZSI6Im5hd2FzIiwiZXhwIjoxNTU1NDE1MjQ1LCJpYXQiOjE1NTQ4MTA0NDV9.2QscsXy8fuPXnO59OIml78T7O6rBhuXmk2H-yBmLzW8',
+    id: 0,
+    firstName: 'nawas',
+    lastName: 'adam',
+    email: 'nawasnaziru@gmail.com',
+    type: 'client',
+    isAdmin: false,
+    password: '123456a',
+  },
+  'linustorvalds@linux.com': {
+    token: 'fyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOjAsImVtYWlsIjoibmF3YXNuYXppcnVAZ21haWwuY29tIiwibmFtZSI6Im5hd2FzIiwiZXhwIjoxNTU1NDE1MjQ1LCJpYXQiOjE1NTQ4MTA0NDV9.2QscsXy8fuPXnO59OIml78T7O6rBhuXmk2H-yBmLzW8',
+    id: 316,
+    firstName: 'linus',
+    lastName: 'torvalds',
+    email: 'linustorvalds@linux.com',
+    type: 'staff',
+    isAdmin: true,
+    password: '123456b',
+  },
+};
+
+// global.Users = {};
+
+global.Accounts = {
+  accountNumber: {
+    accountNumber: 2000000000,
+    firstName: 'nawas',
+    lastName: 'adam',
+    email: 'nawasnaziru@gmail.com',
+    type: 'savings',
+    openingBalance: 0,
+    createdOn: '2019-04-11T09:10:33.000Z',
+    owner: 0,
+    status: 'active',
+    balance: 0,
+    id: 0,
+  },
+};
+
+global.nextAccount = 2000000000;
+global.Transactions = {};
+
+global.staffIds = [104, 189, 316, 427, 518];
+global.adminIds = [411, 581, 611, 723, 851];
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(__dirname + '/UI/favicon.ico'));
@@ -34,40 +81,40 @@ app.use((req, res) => {
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 // error handlers
 // Catch unauthorised errors
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   if (err.name === 'UnauthorizedError') {
     res.status(401);
-    res.json({"message" : err.name + ": " + err.message});
+    res.json({ message: `${err.name}: ${err.message}` });
   }
 });
 
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use((err, req, res, next) => {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+  app.use((err, req, res) => {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err,
     });
+  });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use((err, req, res, next) => {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+app.use((err, req, res) => {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {},
+  });
 });
 
 
