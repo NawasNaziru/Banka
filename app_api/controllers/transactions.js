@@ -142,7 +142,13 @@ module.exports.credit = function (req, res) {
     return;
   }
 
-  
+  if (!(hasId(staffIds, parseInt(Users[req.body.email].id, 10)))) {
+    sendJSONresponse(res, 404, {
+      status: 404,
+      error: 'Register as Staff first, using your privately assigned Id!',
+    });
+    return;
+  }
 
   const transaction = {};
 
