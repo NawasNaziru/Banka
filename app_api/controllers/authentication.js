@@ -2,8 +2,8 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
-
 const jwt = require('jsonwebtoken');
+const passport = require('passport');
 const bcrypt = require('bcrypt');
 
 const saltRounds = 10;
@@ -13,6 +13,30 @@ const saltRounds = 10;
 const sendJSONresponse = function (res, status, content) {
   res.status(status);
   res.json(content);
+};
+
+module.exports.login = function (req, res) {
+  if (!req.body.email || !req.body.password) {
+    sendJSONresponse(res, 400, {
+      status: 400,
+      error: 'Requires your email and password',
+    });
+    return;
+  }
+
+
+  passport.authenticate('local', (err, user, info) => {
+    if (err) {
+      sendJSONresponse(res, 404, { status: 404, error: err });
+      return;
+    }
+
+    if (user) {
+      sendJSONresponse(res, 200, { status: 200, data: user });
+    } else {
+      sendJSONresponse(res, 401, { status: 401, error: info });
+    }
+  })(req, res);
 };
 
 // eslint-disable-next-line func-names
@@ -93,8 +117,11 @@ module.exports.register = function (req, res) {
 
   sendJSONresponse(res, 201, { status: 201, data: user });
 
+  // The below is for security purpose, such that password and hash can only be seen
+  // after user sign in. Thus, making it  unhelpful for a hacker.
+
   user.password = userPassword;
   user.hash = hash;
   Users[user.email] = user;
-};
 
+};
