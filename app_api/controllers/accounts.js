@@ -56,3 +56,56 @@ module.exports.create = function (req, res) {
     sendJSONresponse(res, 201, { status: 201, data: account });
   }
 };
+
+module.exports.activate_deactivate = function (req, res) {
+  if (!req.params.accountNumber) {
+    sendJSONresponse(res, 400, {
+      status: 400,
+      error: 'You have not specified the account number in the params!',
+    });
+    return;
+  }
+
+  if (!req.body.email) {
+    sendJSONresponse(res, 400, {
+      status: 400,
+      error: 'Enter your email!',
+    });
+    return;
+  }
+
+
+  if (!Accounts[req.params.accountNumber]) {
+    sendJSONresponse(res, 404, {
+      status: 404,
+      error: "Account number doesn't exist in the first place or it was deleted!",
+    });
+    return;
+  }
+
+  if (!Users[req.body.email]) {
+    sendJSONresponse(res, 404, {
+      status: 404,
+      error: 'You have not signed up!',
+    });
+    return;
+  }
+
+  if (!(hasId(staffIds, parseInt(Users[req.body.email].id, 10))
+      || hasId(adminIds, parseInt(Users[req.body.email].id, 10)))) {
+    sendJSONresponse(res, 404, {
+      status: 404,
+      error: 'Register as Staff or Admin first, using your privately assigned Id!',
+    });
+    return;
+  }
+
+  // eslint-disable-next-line no-unused-expressions
+  Accounts[req.params.accountNumber].status === 'dormant'
+    ? Accounts[req.params.accountNumber].status = 'active'
+    : Accounts[req.params.accountNumber].status = 'dormant';
+  const account = Accounts[req.params.accountNumber];
+
+
+  sendJSONresponse(res, 201, { status: 201, data: account });
+};
