@@ -2,14 +2,11 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
-
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 
 const saltRounds = 10;
-
-// Predefined generic function for server response in feature modules
 
 const sendJSONresponse = function (res, status, content) {
   res.status(status);
@@ -40,7 +37,6 @@ module.exports.login = function (req, res) {
     }
   })(req, res);
 };
-
 
 
 // eslint-disable-next-line func-names
@@ -125,4 +121,3 @@ module.exports.register = function (req, res) {
   user.hash = hash;
   Users[user.email] = user;
 };
-
