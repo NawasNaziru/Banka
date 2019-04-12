@@ -172,5 +172,3 @@ module.exports.credit = function (req, res) {
 
   sendJSONresponse(res, 201, { status: 201, data: transaction });
 };
-
-
