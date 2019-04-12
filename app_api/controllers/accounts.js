@@ -91,6 +91,15 @@ module.exports.activate_deactivate = function (req, res) {
     return;
   }
 
+  if (!(hasId(staffIds, parseInt(Users[req.body.email].id, 10))
+      || hasId(adminIds, parseInt(Users[req.body.email].id, 10)))) {
+    sendJSONresponse(res, 404, {
+      status: 404,
+      error: 'Register as Staff or Admin first, using your privately assigned Id!',
+    });
+    return;
+  }
+
   // eslint-disable-next-line no-unused-expressions
   Accounts[req.params.accountNumber].status === 'dormant'
     ? Accounts[req.params.accountNumber].status = 'active'
