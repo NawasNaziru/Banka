@@ -17,6 +17,13 @@ const sendJSONresponse = function (res, status, content) {
 
 // eslint-disable-next-line func-names
 module.exports.register = function (req, res) {
+  if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password) {
+    sendJSONresponse(res, 400, {
+      status: 400,
+      error: 'Requires your firstName, lastName, email and password!',
+    });
+    return;
+  }
 
 
   // eslint-disable-next-line no-undef
