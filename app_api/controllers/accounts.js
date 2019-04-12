@@ -109,3 +109,50 @@ module.exports.activate_deactivate = function (req, res) {
 
   sendJSONresponse(res, 201, { status: 201, data: account });
 };
+
+module.exports.delete = function (req, res) {
+  if (!req.params.accountNumber) {
+    sendJSONresponse(res, 400, {
+      status: 400,
+      error: 'You have not specified the account number in the params!',
+    });
+    return;
+  }
+
+  if (!req.body.email) {
+    sendJSONresponse(res, 400, {
+      status: 400,
+      error: 'Enter your email!',
+    });
+  } else {
+    if (!Accounts[req.params.accountNumber]) {
+      sendJSONresponse(res, 404, {
+        status: 404,
+        error: "Account number doesn't exist in the first place or it was deleted!",
+      });
+      return;
+    }
+
+    const regUserEmail = Users[req.body.email];
+
+    if (!regUserEmail) {
+      sendJSONresponse(res, 404, {
+        status: 404,
+        error: 'You have not signed up to perform this action!',
+      });
+      return;
+    }
+
+    if (!(hasId(staffIds, parseInt(regUserEmail.id, 10))
+        || hasId(adminIds, parseInt(regUserEmail.id, 10)))) {
+      sendJSONresponse(res, 404, {
+        status: 404,
+        error: 'Register as Staff or Admin first, using your privately assigned Id!'
+      });
+      return;
+    }
+
+    delete Accounts[req.params.accountNumber];
+    sendJSONresponse(res, 200, { status: 204, message: 'Account deleted successfully!' });
+  }
+};
