@@ -1,6 +1,7 @@
 language: node_js
 node_js:
-  - "10.15.3"
-addons:
-    code_climate:
-        repo_token: d82afa19dd214a3f72c08abedfe5fda1c08cec66fa37e23ea684aab4507f668a
+  - "node"
+  - "8"
+  - "6"
+script: make test-coveralls
+sudo: false
