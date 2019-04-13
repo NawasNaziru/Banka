@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "nyc --require babel-core/register mocha test/test.js --exit -w",
-    "test-single": "nyc --require babel-core/register mocha test/test.js --exit",
+    "test": "nyc --require babel-core/register mocha --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "engines": {
