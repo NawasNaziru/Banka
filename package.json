@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "nyc npm test && nyc report --reporter=text-lcov | coveralls mocha --exit"
+    "test": "mocha --exit",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls" 
   },
   "engines": {
     "node": "~10.15.3",
