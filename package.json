@@ -4,13 +4,18 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha --exit"
+    "test": "nyc --require babel-core/register mocha test/test.js --exit -w",
+    "test-single": "nyc --require babel-core/register mocha test/test.js --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "engines": {
     "node": "~10.15.3",
     "npm": "~6.4.1"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "bcrypt": "^3.0.5",
     "body-parser": "~1.8.1",
     "chai": "^4.2.0",
@@ -29,5 +34,9 @@
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
     "request": "~2.51.0"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "nyc": "^13.3.0"
   }
 }
