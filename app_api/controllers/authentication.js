@@ -123,5 +123,4 @@ module.exports.register = function (req, res) {
   user.password = userPassword;
   user.hash = hash;
   Users[user.email] = user;
-
 };
