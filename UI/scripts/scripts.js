@@ -3,6 +3,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable func-names */
 // eslint-disable-next-line func-names
+
 const saveToken = function (token) {
   // eslint-disable-next-line no-undef
   localStorage.setItem('banka-token', token);
@@ -26,6 +27,7 @@ const isLoggedIn = function () {
 // eslint-disable-next-line no-unused-vars
 // eslint-disable-next-line func-names
 // eslint-disable-next-line consistent-return
+
 const currentUser = function () {
   if (isLoggedIn()) {
     const token = getToken();
@@ -41,11 +43,22 @@ const logout = function () {
   localStorage.removeItem('banka-token');
 };
 
-/* to handle server response in UI */
+function getElemVal (elem){
+   return document.getElementById(elem).value;
+}
 
-document.forms.signupFormId.addEventListener('submit', (event) => {
+var submitForm = function(formId){
+
+document.getElementById(formId).addEventListener('submit', (event) => {
   event.preventDefault();
   // TODO do something here to show user that form is being submitted
+  
+  if(!getElemVal('firstName') || !getElemVal('lastName') || !getElemVal('email') || !getElemVal('password')){
+    document.getElementById('validation_msg').innerHTML = "Fields marked with asterisks are required. Try again.";
+    return;
+  }
+  else {
+  document.getElementById('validation_msg').innerHTML = "Please wait...";
   fetch(event.target.action, {
     method: 'POST',
     body: new URLSearchParams(new FormData(event.target)), // event.target is the form
@@ -53,6 +66,7 @@ document.forms.signupFormId.addEventListener('submit', (event) => {
     saveToken(json.token);
     // console.log(json);
     document.getElementById('signup-msg').innerHTML = 'Wow! You have Successfully registered!';
+    document.getElementById('validation_msg').innerHTML = "";
     // alert(json);
   }).catch(error =>
   // TODO handle error
@@ -62,4 +76,12 @@ document.forms.signupFormId.addEventListener('submit', (event) => {
     // eslint-disable-next-line no-alert
     alert('there was a problem'));
   // alert("stopped");
+  return;
+}
 });
+
+ }
+
+// Handlers for submitting all forms in the app
+
+submitForm('signupFormId');

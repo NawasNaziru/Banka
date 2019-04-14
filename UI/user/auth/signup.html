@@ -31,24 +31,23 @@
         <section id="main">
             <div class="container">
                 <p id="signup-msg" class="zone"> Already a member? Please <a href="login.html">Sign in</a> instead.</p>
-                <!--<form class="one_btn_form" onsubmit="register()">-->
                 <form id="signupFormId" class="one_btn_form" method="POST" action="/api/v1/users/auth/signup">
-                    <div>Note: All fields marked with asterisk (*) are required.</div>
+                    <div id="validation_msg">Note: All fields marked with asterisk (*) are required.</div>
                     <div>
                         <label for="name">First name</label>
-                        <input type="text" name="firstName" placeholder="Enter your first name" value="" />
+                        <input type="text" name="firstName" id="firstName" placeholder="Enter your first name" value="" />
                     </div>
                     <div>
                         <label for="name">Last name</label>
-                        <input type="text" name="lastName" placeholder="Enter your last name" value="" />
+                        <input type="text" name="lastName" id="lastName" placeholder="Enter your last name" value="" />
                     </div>
                     <div>
                         <label for="email">Email address</label>
-                        <input type="email" name="email" placeholder="Enter email" value="" />
+                        <input type="email" name="email" id="email" placeholder="Enter email" value="" />
                     </div>
                     <div>
                         <label for="password">Password</label>
-                        <input type="password" name="password" placeholder="Password" value="" />
+                        <input type="password" name="password" id="password" placeholder="Password" value="" />
                     </div>
                     <div>
                        <!--<button type="submit" id="signup_btn">Sign up!</button>-->
