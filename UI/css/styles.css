@@ -79,6 +79,10 @@ ul {
 	border-radius: 20px;
 }
 
+.invalid{
+	/* background-color: #333333; */
+	color:#e8491d;
+  }
 
 /* header */
 
