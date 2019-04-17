@@ -1,10 +1,6 @@
-/* eslint-disable func-names */
-/* eslint-disable no-undef */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable no-unused-vars */
-const jwt = require('jsonwebtoken');
-const passport = require('passport');
-const bcrypt = require('bcrypt');
+
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
 const saltRounds = 10;
 
@@ -15,7 +11,7 @@ const sendJSONresponse = function (res, status, content) {
   res.json(content);
 };
 
-module.exports.login = function (req, res) {
+export const login = function (req, res) {
   if (!req.body.email || !req.body.password) {
     sendJSONresponse(res, 400, {
       status: 400,
@@ -24,23 +20,34 @@ module.exports.login = function (req, res) {
     return;
   }
 
+  if(!Users[req.body.email]){
+    sendJSONresponse(res, 401, { status: 401, error: 'Sign up first' });
+    return;
+  }
 
-  passport.authenticate('local', (err, user, info) => {
-    if (err) {
-      sendJSONresponse(res, 404, { status: 404, error: err });
-      return;
-    }
+  if(!Users[req.body.email].password){
+    sendJSONresponse(res, 401, { status: 401, error: 'Sign up Again. Your password was lost' });
+    return;
+  }
+  
+  if(req.body.password !== Users[req.body.email]['password']){
+    sendJSONresponse(res, 401, { status: 401, error: 'Incorrect password' });
+    return;
+  }
 
-    if (user) {
-      sendJSONresponse(res, 200, { status: 200, data: user });
-    } else {
-      sendJSONresponse(res, 401, { status: 401, error: info });
-    }
-  })(req, res);
+if(req.body.email !== Users[req.body.email].email){
+  sendJSONresponse(res, 401, { status: 401, error: 'Incorrect username' });
+  return;
+}
+
+ const user = Users[req.body.email];
+ sendJSONresponse(res, 200, { status: 200, data: user });
+ return;
+ 
 };
 
 // eslint-disable-next-line func-names
-module.exports.register = function (req, res) {
+export const register = function (req, res) {
   if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password) {
     sendJSONresponse(res, 400, {
       status: 400,

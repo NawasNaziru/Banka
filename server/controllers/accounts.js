@@ -20,7 +20,7 @@ const hasId = function (arr, id) {
 };
 
 
-module.exports.create = function (req, res) {
+export const create =  (req, res) => {
   if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.accountType) {
     sendJSONresponse(res, 400, {
       status: 400,
@@ -57,7 +57,7 @@ module.exports.create = function (req, res) {
   }
 };
 
-module.exports.activate_deactivate = function (req, res) {
+export const activate_deactivate = function (req, res) {
   if (!req.params.accountNumber) {
     sendJSONresponse(res, 400, {
       status: 400,
@@ -110,7 +110,7 @@ module.exports.activate_deactivate = function (req, res) {
   sendJSONresponse(res, 201, { status: 201, data: account });
 };
 
-module.exports.delete = function (req, res) {
+export const delete_account = function (req, res) {
   if (!req.params.accountNumber) {
     sendJSONresponse(res, 400, {
       status: 400,
@@ -156,3 +156,5 @@ module.exports.delete = function (req, res) {
     sendJSONresponse(res, 200, { status: 204, message: 'Account deleted successfully!' });
   }
 };
+const Num_of_handlers = 3;
+export default Num_of_handlers;

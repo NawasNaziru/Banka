@@ -9,7 +9,7 @@ const isValidPassword = function (reqbodypassword, userSavedHash) {
 };
 
 
-passport.use(new LocalStrategy({
+export default () => { return passport.use(new LocalStrategy({
   usernameField: 'email',
 },
 ((username, password, done) => {
@@ -27,3 +27,5 @@ passport.use(new LocalStrategy({
   }
   return done(null, user);
 })));
+
+}

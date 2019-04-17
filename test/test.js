@@ -3,16 +3,16 @@
 /* eslint-disable no-undef */
 
 // eslint-disable-next-line no-unused-vars
-const assert = require('assert');
+//import assert from 'assert';
 
 // eslint-disable-next-line no-unused-vars
-const chai = require('chai');
+import chai from 'chai';
 
 // eslint-disable-next-line no-unused-vars
 const should = chai.should();
 const { expect } = chai;
-const chaiHttp = require('chai-http');
-const server = require('../app');
+import chaiHttp from 'chai-http';
+import {app as server} from '../server/app.js';
 
 const accountNumber = 2000000000;
 

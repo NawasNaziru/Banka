@@ -22,7 +22,7 @@ const hasId = function (arr, id) {
 };
 
 // eslint-disable-next-line func-names
-module.exports.debit = function (req, res) {
+export const debit = function (req, res) {
   if (!req.params.accountNumber) {
     sendJSONresponse(res, 400, {
       status: 400,
@@ -100,7 +100,7 @@ module.exports.debit = function (req, res) {
   sendJSONresponse(res, 201, { status: 201, data: transaction });
 };
 
-module.exports.credit = function (req, res) {
+export const credit = function (req, res) {
   if (!req.params.accountNumber) {
     sendJSONresponse(res, 400, {
       status: 400,
