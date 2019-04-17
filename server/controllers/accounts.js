@@ -1,16 +1,16 @@
 /* eslint-disable func-names */
 /* eslint-disable no-undef */
-const sendJSONresponse = function (res, status, content) {
+const sendJSONresponse = (res, status, content) => {
   res.status(status);
   res.json(content);
 };
 
 // eslint-disable-next-line no-useless-concat
-function timeStamp() {
+let timeStamp = () => {
   return `${(new Date()).getFullYear()}-${(new Date()).getMonth() + 1}-${(new Date()).getDate()}  ${(new Date()).getHours()}:${(new Date()).getMinutes()}:${(new Date()).getSeconds()}`;
 }
 
-const hasId = function (arr, id) {
+const hasId = (arr, id) => {
   for (let i = 0; i < arr.length; i += 1) {
     if (arr[i] === id) {
       return true;
@@ -57,7 +57,7 @@ export const create =  (req, res) => {
   }
 };
 
-export const activate_deactivate = function (req, res) {
+export const activate_deactivate = (req, res) => {
   if (!req.params.accountNumber) {
     sendJSONresponse(res, 400, {
       status: 400,
@@ -110,7 +110,7 @@ export const activate_deactivate = function (req, res) {
   sendJSONresponse(res, 201, { status: 201, data: account });
 };
 
-export const delete_account = function (req, res) {
+export const delete_account = (req, res) => {
   if (!req.params.accountNumber) {
     sendJSONresponse(res, 400, {
       status: 400,

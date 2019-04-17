@@ -3,16 +3,16 @@
 /* eslint-disable no-useless-concat */
 
 
-const sendJSONresponse = function (res, status, content) {
+const sendJSONresponse = (res, status, content) => {
   res.status(status);
   res.json(content);
 };
 
-function timeStamp() {
+let timeStamp = () => {
   return `${(new Date()).getFullYear()}-${(new Date()).getMonth() + 1}-${(new Date()).getDate()}  ${(new Date()).getHours()}:${(new Date()).getMinutes()}:${(new Date()).getSeconds()}`;
 }
 
-const hasId = function (arr, id) {
+const hasId = (arr, id) => {
   for (let i = 0; i < arr.length; i += 1) {
     if (arr[i] === id) {
       return true;
@@ -22,7 +22,7 @@ const hasId = function (arr, id) {
 };
 
 // eslint-disable-next-line func-names
-export const debit = function (req, res) {
+export const debit = (req, res) => {
   if (!req.params.accountNumber) {
     sendJSONresponse(res, 400, {
       status: 400,
@@ -100,7 +100,7 @@ export const debit = function (req, res) {
   sendJSONresponse(res, 201, { status: 201, data: transaction });
 };
 
-export const credit = function (req, res) {
+export const credit = (req, res) => {
   if (!req.params.accountNumber) {
     sendJSONresponse(res, 400, {
       status: 400,

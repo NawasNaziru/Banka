@@ -122,7 +122,7 @@ app.use((err, req, res) => {
 
 app.set('port', process.env.PORT || 3000);
 
-var server = app.listen(app.get('port'), function() {
+var server = app.listen(app.get('port'), () => {
   debug('Express server listening on port ' + server.address().port);
  console.log('Express server listening on localhost:3000');
 });

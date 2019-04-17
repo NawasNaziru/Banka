@@ -4,17 +4,17 @@
 /* eslint-disable func-names */
 // eslint-disable-next-line func-names
 
-const saveToken = function (token) {
+const saveToken = (token) => {
   // eslint-disable-next-line no-undef
   localStorage.setItem('banka-token', token);
 };
 
-const getToken = function () {
+const getToken = () => {
   // eslint-disable-next-line no-undef
   return localStorage.getItem('banka-token');
 };
 
-const isLoggedIn = function () {
+const isLoggedIn = () => {
   const token = getToken();
 
   if (token) {
@@ -29,7 +29,7 @@ const isLoggedIn = function () {
 // eslint-disable-next-line consistent-return
 
 // eslint-disable-next-line consistent-return
-const currentUser = function () {
+const currentUser = () => {
   if (isLoggedIn()) {
     const token = getToken();
     const payload = JSON.parse($window.atob(token.split('.')[1]));
@@ -40,6 +40,6 @@ const currentUser = function () {
   }
 };
 
-const logout = function () {
+const logout = () => {
   localStorage.removeItem('banka-token');
 };

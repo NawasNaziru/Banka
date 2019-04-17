@@ -2,11 +2,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable no-return-assign */
-function getElemVal(elem) {
+let getElemVal = (elem) => {
   return document.getElementById(elem).value;
 }
 
-const submitForm = function (formId) {
+const submitForm = (formId) => {
   document.getElementById(formId).addEventListener('submit', (event) => {
     event.preventDefault();
 

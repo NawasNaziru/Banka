@@ -6,12 +6,12 @@ const saltRounds = 10;
 
 // Predefined generic function for server response in feature modules
 
-const sendJSONresponse = function (res, status, content) {
+const sendJSONresponse = (res, status, content) => {
   res.status(status);
   res.json(content);
 };
 
-export const login = function (req, res) {
+export const login = (req, res) => {
   if (!req.body.email || !req.body.password) {
     sendJSONresponse(res, 400, {
       status: 400,
@@ -47,7 +47,7 @@ if(req.body.email !== Users[req.body.email].email){
 };
 
 // eslint-disable-next-line func-names
-export const register = function (req, res) {
+export const register = (req, res) => {
   if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password) {
     sendJSONresponse(res, 400, {
       status: 400,
@@ -58,20 +58,13 @@ export const register = function (req, res) {
 
 
   // eslint-disable-next-line no-undef
-  /* if (Users[req.body.email]) {
-    sendJSONresponse(res, 200, {
-      status: 200,
-      error: 'You already have an account. Sign in instead!',
-    });
-  } */
-
   const salt = bcrypt.genSaltSync(saltRounds);
   const hash = bcrypt.hashSync(req.body.password, salt);
   // eslint-disable-next-line no-undef
   const userId = Object.keys(Users).length;
   const userPassword = req.body.password;
 
-  const generateJwt = function () {
+  const generateJwt = () => {
     const expiry = new Date();
     expiry.setDate(expiry.getDate() + 7);
 
@@ -84,7 +77,7 @@ export const register = function (req, res) {
   };
 
 
-  const hasId = function (arr, id) {
+  const hasId = (arr, id) => {
     for (let i = 0; i < arr.length; i += 1) {
       if (arr[i] === id) {
         return true;

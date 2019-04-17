@@ -2,11 +2,11 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-function getElemVal(elem) {
+getElemVal = (elem) => {
   return document.getElementById(elem).value;
 }
 
-const submitForm = function (formId) {
+const submitForm = (formId) => {
   document.getElementById(formId).addEventListener('submit', (event) => {
     event.preventDefault();
     if (!getElemVal('firstName') || !getElemVal('lastName') || !getElemVal('email') || !getElemVal('accountType') || !getElemVal('phone')) {
