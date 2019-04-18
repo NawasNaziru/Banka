@@ -46,7 +46,6 @@ if(req.body.email !== Users[req.body.email].email){
  
 };
 
-// eslint-disable-next-line func-names
 export const register = (req, res) => {
   if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password) {
     sendJSONresponse(res, 400, {
@@ -57,10 +56,8 @@ export const register = (req, res) => {
   }
 
 
-  // eslint-disable-next-line no-undef
   const salt = bcrypt.genSaltSync(saltRounds);
   const hash = bcrypt.hashSync(req.body.password, salt);
-  // eslint-disable-next-line no-undef
   const userId = Object.keys(Users).length;
   const userPassword = req.body.password;
 
@@ -89,26 +86,16 @@ export const register = (req, res) => {
   const user = {};
   const id = parseInt(req.body.id, 10);
   user.token = generateJwt();
-  // eslint-disable-next-line no-unused-expressions
-  // eslint-disable-next-line no-undef
-  // eslint-disable-next-line no-unused-expressions
-  // eslint-disable-next-line no-undef
-  // eslint-disable-next-line no-unused-expressions
-  // eslint-disable-next-line no-undef
-  // eslint-disable-next-line no-unused-expressions
-  // eslint-disable-next-line no-undef
-  // eslint-disable-next-line no-unused-expressions
-  // eslint-disable-next-line no-undef
-  // eslint-disable-next-line no-unused-expressions
+  
   hasId(staffIds, id) || hasId(adminIds, id)
     ? user.id = parseInt(req.body.id, 10) : user.id = userId;
   user.firstName = req.body.firstName;
   user.lastName = req.body.lastName;
   user.email = req.body.email;
-  // eslint-disable-next-line no-unused-expressions
+
   hasId(staffIds, id) || hasId(adminIds, id)
     ? user.type = 'staff' : user.type = 'client';
-  // eslint-disable-next-line no-unused-expressions
+  
   user.type === 'staff' ? user.isAdmin = true : user.isAdmin = false;
 
   // save newly registered user

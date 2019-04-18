@@ -1,14 +1,5 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-undef */
-
-// eslint-disable-next-line no-unused-vars
 import assert from 'assert';
-
-// eslint-disable-next-line no-unused-vars
 import chai from 'chai';
-
-// eslint-disable-next-line no-unused-vars
 const should = chai.should();
 const { expect } = chai;
 import chaiHttp from 'chai-http';
@@ -81,7 +72,6 @@ describe('Banka API endpoints', () => {
           res.body.data.id.should.be.a('number');
           res.body.data.firstName.should.equal('nawas');
           res.body.data.lastName.should.equal('adam');
-          console.log('Response Body:', res.body);
         });
 
       done();
@@ -111,7 +101,6 @@ describe('Banka API endpoints', () => {
           res.body.data.should.have.property('transactionType');
           res.body.data.transactionType.should.be.a('string');
           res.body.data.amount.should.equal(5400);
-          console.log('Response Body:', res.body);
         });
 
       done();
@@ -139,8 +128,6 @@ describe('Banka API endpoints', () => {
           res.body.data.should.have.property('transactionType');
           res.body.data.transactionType.should.be.a('string');
           res.body.data.amount.should.equal(5400);
-
-          console.log('Response Body:', res.body);
         });
 
       done();
@@ -163,8 +150,6 @@ describe('Banka API endpoints', () => {
           res.body.data.should.be.a('object');
           res.body.data.should.have.property('accountNumber');
           res.body.data.should.have.property('status');
-
-          console.log('Response Body:', res.body);
         });
 
       done();

@@ -24,4 +24,4 @@ router.delete('/accounts/:accountNumber', ctrlAcc.delete_account);
 // transaction routes
 router.post('/transactions/:accountNumber/debit', ctrlTxn.debit);
 router.post('/transactions/:accountNumber/credit', ctrlTxn.credit);
-export {router as routesApi};
+export default router;

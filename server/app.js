@@ -8,7 +8,7 @@ import bodyParser from 'body-parser';
 import Debug from 'debug';
 const debug = Debug('Express4');
 
-import  {routesApi} from './routes/index';
+import  router from './routes/index';
 
 const app = express();
 
@@ -64,9 +64,6 @@ global.Transactions = {};
 global.staffIds = [104, 189, 316, 427, 518];
 global.adminIds = [411, 581, 611, 723, 851];
 
-// uncomment after placing your favicon in /public
-// app.use(favicon(__dirname + '/UI/favicon.ico'));
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -74,7 +71,7 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'UI')));
 
-app.use('/api/v1', routesApi);
+app.use('/api/v1', router);
 
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'UI', 'index.html'));
@@ -122,9 +119,9 @@ app.use((err, req, res) => {
 
 app.set('port', process.env.PORT || 3000);
 
-var server = app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'), () => {
   debug('Express server listening on port ' + server.address().port);
  console.log('Express server listening on localhost:3000');
 });
 
-export {app};
+export default app;

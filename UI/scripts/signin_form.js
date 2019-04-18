@@ -1,7 +1,3 @@
-/* eslint-disable func-names */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-/* eslint-disable no-return-assign */
 let getElemVal = (elem) => {
   return document.getElementById(elem).value;
 }

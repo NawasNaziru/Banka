@@ -1,8 +1,5 @@
-/* eslint-disable func-names */
-/* eslint-disable no-return-assign */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-getElemVal = (elem) => {
+
+let getElemVal = (elem) => {
   return document.getElementById(elem).value;
 }
 
@@ -30,3 +27,4 @@ const submitForm = (formId) => {
 
 // Handler for submitting create_acct form
 submitForm('createAcctFormId');
+

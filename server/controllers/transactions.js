@@ -1,8 +1,3 @@
-/* eslint-disable func-names */
-/* eslint-disable no-undef */
-/* eslint-disable no-useless-concat */
-
-
 const sendJSONresponse = (res, status, content) => {
   res.status(status);
   res.json(content);
@@ -21,7 +16,6 @@ const hasId = (arr, id) => {
   return false;
 };
 
-// eslint-disable-next-line func-names
 export const debit = (req, res) => {
   if (!req.params.accountNumber) {
     sendJSONresponse(res, 400, {
@@ -48,7 +42,6 @@ export const debit = (req, res) => {
   }
 
 
-  // eslint-disable-next-line no-undef
   if (!Accounts[req.params.accountNumber]) {
     sendJSONresponse(res, 404, {
       status: 404,
@@ -57,7 +50,6 @@ export const debit = (req, res) => {
     return;
   }
 
-  // eslint-disable-next-line no-undef
   if (!Users[req.body.email]) {
     sendJSONresponse(res, 404, {
       status: 404,
@@ -66,7 +58,6 @@ export const debit = (req, res) => {
     return;
   }
 
-  // eslint-disable-next-line no-undef
   if (!(hasId(staffIds, parseInt(Users[req.body.email].id, 10)))) {
     sendJSONresponse(res, 404, {
       status: 404,
@@ -77,11 +68,9 @@ export const debit = (req, res) => {
 
   const transaction = {};
 
-  // eslint-disable-next-line no-undef
   transaction.transactionId = Object.keys(Transactions).length;
   transaction.accountNumber = parseInt(req.params.accountNumber, 10);
   transaction.amount = parseFloat(req.body.amount, 10);
-  // eslint-disable-next-line no-undef
   transaction.cashier = parseInt(Users[req.body.email].id, 10);
   transaction.createdOn = timeStamp();
   transaction.transactionType = 'debit';

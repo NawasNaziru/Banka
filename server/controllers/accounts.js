@@ -1,11 +1,9 @@
-/* eslint-disable func-names */
-/* eslint-disable no-undef */
-const sendJSONresponse = (res, status, content) => {
+
+let sendJSONresponse = (res, status, content) => {
   res.status(status);
   res.json(content);
 };
 
-// eslint-disable-next-line no-useless-concat
 let timeStamp = () => {
   return `${(new Date()).getFullYear()}-${(new Date()).getMonth() + 1}-${(new Date()).getDate()}  ${(new Date()).getHours()}:${(new Date()).getMinutes()}:${(new Date()).getSeconds()}`;
 }
@@ -100,7 +98,7 @@ export const activate_deactivate = (req, res) => {
     return;
   }
 
-  // eslint-disable-next-line no-unused-expressions
+
   Accounts[req.params.accountNumber].status === 'dormant'
     ? Accounts[req.params.accountNumber].status = 'active'
     : Accounts[req.params.accountNumber].status = 'dormant';
