@@ -3,7 +3,7 @@ import chai from 'chai';
 const should = chai.should();
 const { expect } = chai;
 import chaiHttp from 'chai-http';
-import app from '../server/app.js';
+import {app as server} from '../server/app.js';
 
 const accountNumber = 2000000000;
 
@@ -22,6 +22,7 @@ describe('Banka API endpoints', () => {
         })
         .end((err, res) => {
           expect(err).to.be.null;
+          res.should.have.status(200);
           res.body.should.be.a('object');
         });
 
@@ -37,6 +38,7 @@ describe('Banka API endpoints', () => {
         })
         .end((err, res) => {
           expect(err).to.be.null;
+          res.should.have.status(200);
           res.body.should.be.a('object');
         });
 
