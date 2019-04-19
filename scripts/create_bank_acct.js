@@ -24,7 +24,7 @@ const submitForm = function (formId) {
       saveToken(json.token);
       document.getElementById('create_acct_msg').innerHTML = 'Wow! You have Successfully registered!';
       document.getElementById('create_acct_val_msg').innerHTML = '';
-    }).catch(error => document.getElementById('create_acct_msg').innerHTML = 'Signup first!');
+    }).catch(error => document.getElementById('create_acct_msg').innerHTML = 'An error occured. Please try again!');
   });
 };
 
