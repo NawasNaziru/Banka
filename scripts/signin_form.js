@@ -27,7 +27,7 @@ const submitForm = function (formId) {
       saveToken(json.token);
       document.getElementById('signin-msg').innerHTML = 'Wow! You have Successfully registered!';
       document.getElementById('signin_validMsg').innerHTML = '';
-    }).catch(error => document.getElementById('signin-msg').innerHTML = 'Signup first!');
+    }).catch(error => document.getElementById('signin-msg').innerHTML = 'An error occured. Try Again');
   });
 };
 
