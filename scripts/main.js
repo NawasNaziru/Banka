@@ -1,45 +1,37 @@
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-/* eslint-disable func-names */
-// eslint-disable-next-line func-names
+let cancelButtons = document.getElementsByClassName('cancel_buttons');
+Array.from(cancelButtons).forEach(cancelButton=>{
+  cancelButton.addEventListener('click', ()=>{
+    document.getElementById('modal_2').style.display='none';
+    document.getElementById('modal_1').style.display='none';
+    document.getElementById('modal_3').style.display='none';
+    document.getElementById('modal_4').style.display='none';
+  });
+});
 
-const saveToken = function (token) {
-  // eslint-disable-next-line no-undef
-  localStorage.setItem('banka-token', token);
-};
+document.getElementById("button_1").addEventListener('click', ()=>{
+  document.getElementById('modal_1').style.display='block';
+  document.getElementById('modal_2').style.display='none';
+  document.getElementById('modal_3').style.display='none';
+});
 
-const getToken = function () {
-  // eslint-disable-next-line no-undef
-  return localStorage.getItem('banka-token');
-};
+document.getElementById("button_2").addEventListener('click', ()=>{
+  document.getElementById('modal_1').style.display='none';
+  document.getElementById('modal_2').style.display='block';
+  document.getElementById('modal_3').style.display='none';
+});
 
-const isLoggedIn = function () {
-  const token = getToken();
+document.getElementById("button_3").addEventListener('click', ()=>{
+  document.getElementById('modal_1').style.display='none';
+  document.getElementById('modal_2').style.display='none';
+  document.getElementById('modal_3').style.display='block';
+});
 
-  if (token) {
-    const payload = JSON.parse($window.atob(token.split('.')[1]));
-    return payload.exp > Date.now() / 1000;
+
+document.getElementById('activate_button').addEventListener('click', (e)=>{
+  e.preventDefault();
+  if(document.getElementById('activate_deactivate_button').value==="Nawas Naziru Adam ZinelAbideen"){
+    document.getElementById('modal_message').innerHTML="Successful";
+    document.getElementById('modal_2').style.display='none';
   }
-  return false;
-};
-
-// eslint-disable-next-line no-unused-vars
-// eslint-disable-next-line func-names
-// eslint-disable-next-line consistent-return
-
-// eslint-disable-next-line consistent-return
-const currentUser = function () {
-  if (isLoggedIn()) {
-    const token = getToken();
-    const payload = JSON.parse($window.atob(token.split('.')[1]));
-    return {
-      email: payload.email,
-      name: payload.name,
-    };
-  }
-};
-
-const logout = function () {
-  localStorage.removeItem('banka-token');
-};
+  document.getElementById('modal_message').innerHTML="Wrong entered name!";
+})
