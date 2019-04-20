@@ -1,32 +1,37 @@
-const saveToken = (token) => {
-  localStorage.setItem('banka-token', token);
-};
+let cancelButtons = document.getElementsByClassName('cancel_buttons');
+Array.from(cancelButtons).forEach(cancelButton=>{
+  cancelButton.addEventListener('click', ()=>{
+    document.getElementById('modal_2').style.display='none';
+    document.getElementById('modal_1').style.display='none';
+    document.getElementById('modal_3').style.display='none';
+    document.getElementById('modal_4').style.display='none';
+  });
+});
 
-const getToken = () => {
-  return localStorage.getItem('banka-token');
-};
+document.getElementById("button_1").addEventListener('click', ()=>{
+  document.getElementById('modal_1').style.display='block';
+  document.getElementById('modal_2').style.display='none';
+  document.getElementById('modal_3').style.display='none';
+});
 
-const isLoggedIn = () => {
-  const token = getToken();
+document.getElementById("button_2").addEventListener('click', ()=>{
+  document.getElementById('modal_1').style.display='none';
+  document.getElementById('modal_2').style.display='block';
+  document.getElementById('modal_3').style.display='none';
+});
 
-  if (token) {
-    const payload = JSON.parse($window.atob(token.split('.')[1]));
-    return payload.exp > Date.now() / 1000;
+document.getElementById("button_3").addEventListener('click', ()=>{
+  document.getElementById('modal_1').style.display='none';
+  document.getElementById('modal_2').style.display='none';
+  document.getElementById('modal_3').style.display='block';
+});
+
+
+document.getElementById('activate_button').addEventListener('click', (e)=>{
+  e.preventDefault();
+  if(document.getElementById('activate_deactivate_button').value==="Nawas Naziru Adam ZinelAbideen"){
+    document.getElementById('modal_message').innerHTML="Successful";
+    document.getElementById('modal_2').style.display='none';
   }
-  return false;
-};
-
-const currentUser = () => {
-  if (isLoggedIn()) {
-    const token = getToken();
-    const payload = JSON.parse($window.atob(token.split('.')[1]));
-    return {
-      email: payload.email,
-      name: payload.name,
-    };
-  }
-};
-
-const logout = () => {
-  localStorage.removeItem('banka-token');
-};
+  document.getElementById('modal_message').innerHTML="Wrong entered name!";
+})

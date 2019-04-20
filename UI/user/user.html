@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Light user friendly core banking application">
+    <meta name="keywords" content="Banking, Web application, light">
+    <meta name="author" content="Nawas Naziru Adam">
+    <title> Banka | Welcome </title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <section id="main">
+            <div id="table_div" class="container">
+                <table class="tablemobile allbanks">
+                    <tr>
+                        <th>Account Name</th>
+                        <th>Account Number</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>Nawas Naziru Adam ZinelAbideen</td>
+                        <td>3059939938</td>
+                        <td>
+                            <button id="button_1">View Profile</button>
+                            <button id="button_2">View History</button>
+                        </td>
+                    </tr>
+                </table>
+                <button id="button_3" class="yellow">Add Account</button>
+            </div>
+        </section>
+        <footer>
+            <p> Nawas Naziru Adam, Copyright &copy; 2019 </p>
+        </footer>
+    </div>
+    <div id="modal_1" class="modal">
+        <div class="modal_message"></div>
+        <label>
+            <b>Account Number: </b> 3075896238
+        </label>
+        <label>
+            <b>Owner: </b> Zinel Abideen
+        </label>
+        <label>
+            <b>Created On: </b> 09/12/2018
+        </label>
+        <label>
+            <b>Account Type: </b> Fixed Deposit
+        </label>
+        <label>
+            <b>Account Status: </b> Active
+        </label>
+        <label>
+            <b>Balance: </b> 500,000,000,000.98
+        </label>
+        <div class="buttons">
+            <button class="cancel_buttons">Close</button>
+        </div>
+    </div>
+
+    <div id="modal_2" class="modal">
+        <div class="modal_message"></div>
+        <label>
+            <b>Created On: </b> 09/12/2018
+        </label>
+        <label>
+            <b>Account Type: </b> Fixed Deposit
+        </label>
+        <label>
+            <b>Account Number: </b> 3075896238
+        </label>
+        <label>
+            <b>Cashier: </b> 611
+        </label>
+        <label>
+            <b>Amount: </b> 70,000,000.00
+        </label>
+        <label>
+            <b>Old Balance: </b> 500,000,000,000.98
+        </label>
+        <label>
+            <b>New Balance: </b> 500,070,000,000.98
+        </label>
+        <div class="buttons">
+                <button class="cancel_buttons">Close</button>
+        </div>
+    </div>
+    <div id="modal_3" class="modal">
+      <center><b><p id="create_acct_msg" class="zone">Create Your Brand New Bank Account</p></b></center>
+      <form id="createAcctFormId" action="">
+        <center><div id="create_acct_val_msg">Note: All fields are required.</div></center>
+        <br/>
+        <label>
+            Firstname
+            <input id="firstName"type="text" value=""/>
+        </label>
+        <label>
+            Lastname
+            <input id="lastName" type="text" value=""/>
+        </label>
+        <label>
+            Email
+            <input id="email" type="email" value="" />
+        </label>
+        <label>
+            Mobile phone
+            <input id="phone" type="number" value="" />
+        </label>
+        <label>
+                Home address
+                <input id="home" type="text"  value=""/>
+            </label>
+        <label>
+            Account type
+            <select>
+                <option value="">Choose</option>
+                <option value="">Savings</option>
+                <option value="">Current</option>
+                <option value="">Fixed deposit</option>
+            </select>
+        </label>
+        <div class="buttons">
+            <input type="submit" value="Proceed" class="button_1" />
+            <button class="cancel_buttons">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="../scripts/create_bank_acct.js"></script>
+    <script src="../scripts/main.js"></script>
+</body>
+
+</html>

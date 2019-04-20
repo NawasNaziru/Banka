@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -13,31 +13,9 @@
 
 <body>
     <div class="main-container">
-        <header>
-            <div class="container">
-                <div id="branding">
-                    <h1> <span class="highlight"> Banka </span> Core Banking Services </h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="./all_bank_accounts.html"> Home </a></li>
-                        <li>
-                            <div class="dropdown">
-                                <img src="../img/you.png" alt="You">
-                                <div class="dropdown-content">
-                                    <a href="./auth/login.html" class="blackfont">Log out</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li><a href="./auth/login.html" class="blackfont">Log out</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
         <section id="main">
             <div id="table_div" class="container">
-                <table class="tablemobile">
+                <table class="tablemobile allbanks">
                     <tr>
                         <th>Account Name</th>
                         <th>Account Number</th>
@@ -45,38 +23,11 @@
                     </tr>
                     <tr>
                         <td>Nawas Naziru Adam ZinelAbideen</td>
-                        <td>3059939938</td>
+                        <td>3075896238</td>
                         <td>
-                            <select>
-                                <option>Choose Action</option>
-                                <option>View</option>
-                                <option>Credit/Debit</option>
-                                <option>Delete</option>
-                                <select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nawas Naziru Adam ZinelAbideen</td>
-                        <td>3059939938</td>
-                        <td>
-                            <select>
-                                <option>Choose Action</option>
-                                <option>View</option>
-                                <option>Credit/Debit</option>
-                                <option>Delete</option>
-                                <select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nawas Naziru Adam ZinelAbideen</td>
-                        <td>3059939938</td>
-                        <td>
-                            <select>
-                                <option>Choose Action</option>
-                                <option>View</option>
-                                <option>Credit/Debit</option>
-                                <option>Delete</option>
-                                <select>
+                            <button id="button_1">View</button>
+                            <button id="button_2">Credit/Debit</button>
+                            <button id="button_3">Delete</button>
                         </td>
                     </tr>
                 </table>
@@ -86,6 +37,68 @@
             <p> Nawas Naziru Adam, Copyright &copy; 2019 </p>
         </footer>
     </div>
+    <div id="modal_1" class="modal">
+        <div class="modal_message"></div>
+        <div class="modal_content">
+            <label>
+                <b>Account Number: </b> 3075896238
+            </label>
+            <label>
+                <b>Owner: </b> Zinel Abideen
+            </label>
+            <label>
+                <b>Created On: </b> 09/12/2018
+            </label>
+            <label>
+                <b>Account Type: </b> Fixed Deposit
+            </label>
+            <label>
+                <b>Account Status: </b> Active
+            </label>
+            <label>
+                <b>Balance: </b> 500,000,000,000.98
+            </label>
+    
+            <div class="buttons">
+                <button class="cancel_buttons">Close</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal_2" class="modal">
+     <center><b><p id="message" class="zone"></p></b></center>
+     <form id="forms" action="">
+        <center><div id="validation_msg">Note: All fields are required.</div></center>
+        <br/>
+        <label>
+            <b>Account Number: </b> 3089567856
+        </label>
+        <label>
+            <input id="input_button" type="number" placeholder="Enter the amount" value="" />
+        </label>
+        <div class="buttons">
+            <input type="submit" value="Credit" id="credit_button" />
+            <button type="submit" id="debit_button">Debit</button>
+        </div>
+       </form>
+    </div>
+    <div id="modal_3" class="modal">
+     <center><b><p id="message" class="zone"></p></b></center>
+     <form id="forms" action="">
+      <center><div id="validation_msg"></div></center>
+      <br/>
+      <div class="modal_message"></div>
+      <div class="modal_content">
+            <b>Account Number: </b> 3089563561
+            <h3>Are you sure you want to delete?</h3>
+            <div class="buttons">
+            <input type="submit" value="Yes"/>
+            <button class="cancel_buttons">Cancel</button>
+            </div>
+       </div>
+      </form>
+    </div>
+    <script src="../scripts/staff_all_bank_accounts.js"></script>
+    <script src="../scripts/main.js"></script>
 </body>
 
 </html>
